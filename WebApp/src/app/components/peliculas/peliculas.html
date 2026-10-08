@@ -1,0 +1,84 @@
+<div class="catalogo">
+    <header class="hero">
+        <div class="hero-contenido">
+            <span class="subtitulo">UN VIAJE A OTROS MUNDOS</span>
+            <h1>Studio Ghibli</h1>
+            <p>
+                Historias mágicas, mundos extraordinarios y personajes
+                que permanecen en el corazón.
+            </p>
+
+            <a href="#peliculas" class="explorar-btn">
+                Explorar películas
+                <span>↓</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="contenido" id="peliculas">
+        <div class="encabezado-catalogo">
+            <div>
+                <span class="seccion-label">NUESTRA COLECCIÓN</span>
+                <h2>Un mundo de historias</h2>
+                <p>Descubre las películas que hacen volar la imaginación.</p>
+            </div>
+
+            <span class="contador">
+                {{ peliculas().length }} películas
+            </span>
+        </div>
+
+        <div class="grid-peliculas">
+            @for (pelicula of peliculas(); track pelicula.id) {
+            <article class="card">
+                <div class="imagen-contenedor">
+                    <img [src]="pelicula.image" [alt]="pelicula.title" loading="lazy" />
+
+                    <span class="imagen-etiqueta">STUDIO GHIBLI</span>
+                </div>
+
+                <div class="card-contenido">
+                    <h3>{{ pelicula.title }}</h3>
+
+                    <p class="descripcion">
+                        {{ pelicula.description }}
+                    </p>
+
+                    <div class="etiquetas">
+                        <span class="etiqueta">
+                            <span class="etiqueta-icono">🎬</span>
+                            <span>
+                                <strong>Director</strong>
+                                {{ pelicula.director }}
+                            </span>
+                        </span>
+
+                        <span class="etiqueta">
+                            <span class="etiqueta-icono">🎨</span>
+                            <span>
+                                <strong>Productor</strong>
+                                {{ pelicula.producer }}
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </article>
+            }
+        </div>
+
+        @if (peliculas().length === 0) {
+        <div class="sin-peliculas">
+            <span>🌿</span>
+            <h3>El bosque está tranquilo...</h3>
+            <p>No hay películas disponibles por el momento.</p>
+        </div>
+        }
+    </main>
+
+    <footer class="footer">
+        GitHub:
+        <a href="https://github.com/Juan-VM/Angular-APIRest" target="_blank">
+            Angular-APIRest
+        </a>
+    </footer>
+</div>
